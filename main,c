@@ -1,0 +1,22 @@
+#include<reg51.h>
+sbit LED=P2^0;
+sbit BUTTON=P30;
+
+void delay_ms(unsigned int ms){
+unsigned int i,j;
+for(i=0;i<500;i++)
+for(j=0;j<1275;j++);
+}
+void main(){
+LED=1;  // intially led off
+BUTTON=1; // initially buttton is off
+
+while(1){
+if(BUTTON==0){
+delay_ms(20);  // debounce delay
+
+if(BUTTON==0){
+LED=~LED;  //led toggle
+
+while(BUTTON==0);  // wait for release
+}}}
